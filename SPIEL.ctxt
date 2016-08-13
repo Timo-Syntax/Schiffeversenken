@@ -1,0 +1,21 @@
+#BlueJ class context
+comment0.params=
+comment0.target=SPIEL()
+comment0.text=\r\n\ Konstruktor\ fuer\ Objekte\ der\ Klasse\ SPIEL\r\n
+comment1.params=neuesIntervall
+comment1.target=void\ tickerIntervallSetzen(int)
+comment1.text=\r\n\ Methode\ tickerIntervallSetzen\ setzt\ das\ Intervall\ zum\ Aufrufen\ des\ Tickers\ neu.\ \r\n\ @param\ \ \ neuesIntervall\ \ Zeitintervall\ in\ Millisekunden\ zwischen\ den\ Ticks\r\n
+comment2.params=
+comment2.target=void\ tickerStoppen()
+comment2.text=\r\n\ Methode\ tickerStoppen\ zum\ stoppen\ des\ Tickers.\ \r\n\ Anschlie\u00DFend\ finden\ keine\ zeitlich\ wiederkehrenden\ Ereignisse\ mehr\ statt.\ \r\n\ Das\ Spiel\ steht\ still.\ \r\n
+comment3.params=neuesIntervall
+comment3.target=void\ tickerStarten(int)
+comment3.text=\r\n\ Methode\ tickerStarten\ zum\ erneuten\ Starten\ des\ Tickers\ nach\ einem\ Stoppen.\ \r\n\ Bei\ einem\ neuen\ SPIEL-Objekt\ ist\ der\ Ticker\ schon\ gestartet.\ \r\n\ V\ O\ R\ S\ I\ C\ H\ T\ \!\ Mehrmaliges\ starten\ fuehrt\ zur\ Halbierung,\ Drittelung\ ...\ des\ Zeitintervalls\!\r\n\ @param\ \ \ neuesIntervall\ \ \ \ \ \ Das\ Zeitintervall\ zwischen\ den\ Ticks\ in\ Millisekunden\r\n
+comment4.params=von\ bis
+comment4.target=int\ zufallszahlVonBis(int,\ int)
+comment4.text=\r\n\ Methode\ gibZufallszahlVonBis\ gibt\ ganze\ Zufallszahlen\r\n\ @param\ \ \ von\ \ \ \ \ kleinste\ moegliche\ Zufallszahl\r\n\ @param\ \ \ bis\ \ \ \ \ groesste\ moegliche\ Zufallszahl\r\n
+comment5.params=
+comment5.target=void\ tick()
+comment6.params=code
+comment6.target=void\ tasteReagieren(int)
+numComments=7
