@@ -17,31 +17,34 @@
 
 public class SPIELFELD extends SPIEL {
 
-    private SCHIFF[][] spielfeld1, spielfeld2, spielfeldAktuell;
-    private int xAktuell, yAktuell;
+    private SCHIFF[][] spielfeld1, // 2-dimensionales Array, erst x-Wert, dann y-Wert -> spielfeld1[x][y]
+                       spielfeld2, // 2. Spielfeld
+                       spielfeldAktuell; // Referenz auf das aktuelle Spielfeld, wird bei Spielerwechsel umgetauscht
+                       
+    private int xAktuell, yAktuell; // aktuelle x und y-Werte -> spielfeldAktuell[xAktuell][yAktuell] == aktuelles SCHIFF
 
     public SPIELFELD(){
         super();
-        spielfeld1 = new SCHIFF[10][10];
+        spielfeld1 = new SCHIFF[10][10]; // neues Array mit 10*10 Objekten der Klasse SCHIFF erzeugen
 
         for(int x=0; x<10; x++){
             for(int y=0; y<10; y++){
-                spielfeld1[x][y] = new SCHIFF(20+x*36+12+10, 125+y*36+12);
+                spielfeld1[x][y] = new SCHIFF(20+x*36+12+10, 125+y*36+12); // Feld initialisieren
             }
         }
 
-        spielfeld2 = new SCHIFF[10][10];
+        spielfeld2 = new SCHIFF[10][10]; // neues Array mit 10*10 Objekten der Klasse SCHIFF erzeugen
 
         for(int x=0; x<10; x++){
             for(int y=0; y<10; y++){
-                spielfeld2[x][y] = new SCHIFF(20+360+30+x*36+12+20, 125+y*36+12);
+                spielfeld2[x][y] = new SCHIFF(20+360+30+x*36+12+20, 125+y*36+12); // Feld initialisieren
             }
         }
 
-        spielfeldAktuell = spielfeld1;
-        xAktuell = 0;
-        yAktuell = 0;
-        spielfeldAktuell[xAktuell][yAktuell].setzeFarbe("rot");
+        spielfeldAktuell = spielfeld1; // der linke Spieler beginnt
+        xAktuell = 0; // ganz links
+        yAktuell = 0; // ganz oben
+        spielfeldAktuell[xAktuell][yAktuell].setzeFarbe("rot"); // links-oberes SCHIFF rot setzen
     }
 
     @Override
@@ -50,24 +53,24 @@ public class SPIELFELD extends SPIEL {
     @Override
     public void tasteReagieren( int code ) {
         if ( code == 26 && yAktuell > 0 ) { // oben
-            spielfeldAktuell[xAktuell][yAktuell].setzeFarbe("grau");
-            spielfeldAktuell[xAktuell][--yAktuell].setzeFarbe("rot");
+            spielfeldAktuell[xAktuell][yAktuell].setzeFarbe("grau"); // aktuelles SCHIFF grau
+            spielfeldAktuell[xAktuell][--yAktuell].setzeFarbe("rot"); // SCHIFF eines weiter oben rot
         } else if ( code == 27 && xAktuell < 9 ) { // rechts
-            spielfeldAktuell[xAktuell][yAktuell].setzeFarbe("grau");
-            spielfeldAktuell[++xAktuell][yAktuell].setzeFarbe("rot");
+            spielfeldAktuell[xAktuell][yAktuell].setzeFarbe("grau"); // aktuelles SCHIFF grau
+            spielfeldAktuell[++xAktuell][yAktuell].setzeFarbe("rot"); // SCHIFF eines weiter rechts rot
         } else if ( code == 28 && yAktuell < 9 ) { // unten
-            spielfeldAktuell[xAktuell][yAktuell].setzeFarbe("grau");
-            spielfeldAktuell[xAktuell][++yAktuell].setzeFarbe("rot");
+            spielfeldAktuell[xAktuell][yAktuell].setzeFarbe("grau"); // aktuelles SCHIFF grau
+            spielfeldAktuell[xAktuell][++yAktuell].setzeFarbe("rot"); // SCHIFF eines weiter unten rot
         } else if ( code == 29 && xAktuell > 0 ) { // links
-            spielfeldAktuell[xAktuell][yAktuell].setzeFarbe("grau");
-            spielfeldAktuell[--xAktuell][yAktuell].setzeFarbe("rot");
+            spielfeldAktuell[xAktuell][yAktuell].setzeFarbe("grau"); // aktuelles SCHIFF grau
+            spielfeldAktuell[--xAktuell][yAktuell].setzeFarbe("rot"); // SCHIFF eines weiter links rot
         } else if ( code == 31 ) { // Enter
-            spielfeldAktuell[xAktuell][yAktuell].setzeFarbe("grau");
+            spielfeldAktuell[xAktuell][yAktuell].setzeFarbe("grau"); // aktuelles SCHIFF grau
             
-            spielfeldAktuell = spielfeldAktuell == spielfeld1 ? spielfeld2 : spielfeld1; // Anderes Spielfeld
-            xAktuell = 0;
-            yAktuell = 0;
-            spielfeldAktuell[xAktuell][yAktuell].setzeFarbe("rot");
+            spielfeldAktuell = spielfeldAktuell == spielfeld1 ? spielfeld2 : spielfeld1; // Anderes Spielfeld auswählen, der andere Spieler ist nun an der Reihe
+            xAktuell = 0; // ganz links
+            yAktuell = 0; // ganz oben
+            spielfeldAktuell[xAktuell][yAktuell].setzeFarbe("rot"); // links-oberes SCHIFF rot setzen
         }
     }
 }
